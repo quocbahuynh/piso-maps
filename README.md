@@ -2,7 +2,8 @@
 
 **PISO API** — a SaaS that provides real-time autocomplete, search, and place detail data from Google Maps through a simple REST API. Free API key, integrate in 30 seconds.
 
-Open source for education. [MIT License](LICENSE).
+Official Website: [pisomap.tech](https://www.pisomap.tech/)
+Docs: [docs.pisomap.tech](https://docs.pisomap.tech/)
 
 ---
 
@@ -161,4 +162,4 @@ PISO.Shared              DTOs, constants, attributes
 
 ## License
 
-MIT — see [my-backend/PISO/LICENSE](my-backend/PISO/LICENSE).
+Open source for education. [MIT License](LICENSE) — see [my-backend/PISO/LICENSE](my-backend/PISO/LICENSE).
