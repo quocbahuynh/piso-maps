@@ -1,0 +1,99 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/black.css';
+@import 'fumadocs-ui/css/preset.css';
+
+:root {
+  --color-fd-background: #ffffff;
+  --color-fd-foreground: #030303;
+  --color-fd-muted: #f5f5f5;
+  --color-fd-muted-foreground: #404040;
+  --color-fd-popover: #ffffff;
+  --color-fd-popover-foreground: #030303;
+  --color-fd-card: #ebebeb;
+  --color-fd-card-foreground: #030303;
+  --color-fd-border: #e7eaf0;
+  --color-fd-primary: #000000;
+  --color-fd-primary-foreground: #ffffff;
+  --color-fd-secondary: #f0f0f0;
+  --color-fd-secondary-foreground: #030303;
+  --color-fd-accent: rgba(0, 0, 0, 0.06);
+  --color-fd-accent-foreground: #030303;
+  --color-fd-ring: #939393;
+  --color-fd-overlay: rgba(26, 26, 26, 0.2);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.prose {
+  color: #404040;
+}
+
+.prose table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.prose table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #404040;
+  border-bottom: 2px solid var(--color-fd-border);
+}
+
+.prose table tbody tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.prose table tbody tr:hover {
+  background-color: #f0f0f0;
+}
+
+.prose table td,
+.prose table th {
+  padding: 10px 14px;
+}
+
+.prose table td {
+  border-bottom: 1px solid var(--color-fd-border);
+}
+
+.prose table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tbody td:first-child {
+  font-weight: 500;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.8125rem;
+}
+
+.prose table td:last-child {
+  min-width: 240px;
+}
+
+@media (min-width: 768px) {
+  .md\:layout\:\[--n\:268px\] {
+    --n: 320px !important;
+  }
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}

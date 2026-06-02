@@ -1,0 +1,261 @@
+.section {
+  background-color: var(--color-canvas);
+  padding-bottom: var(--space-section);
+}
+
+/* Outer wrapper — adds lateral padding on desktop for the "contained card" look */
+.outer {
+  width: 100%;
+  padding: 0;
+  padding-top: 64px; /* Space for the 64px fixed navbar */
+}
+
+@media (min-width: 1024px) {
+  .outer {
+    padding-inline: var(--space-md);
+  }
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-ink); /* Fallback */
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    border-radius: var(--radius-lg);
+    min-height: 85vh;
+  }
+}
+
+/* Spline Embed Wrapper */
+.splineWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.splineIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: auto; /* Allow interaction */
+  
+  /* Zoom in by 15% and push it slightly down to hide the watermark, keeping it horizontally centered */
+  transform-origin: center center;
+  transform: scale(1.15) translateY(4%);
+}
+
+/* Subtle overlay so text remains readable over the 3D model */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Content layer sits on top, but pointer-events: none to allow clicking through to 3D */
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  pointer-events: none;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  padding-block: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-block: 0;
+    margin-top: auto;
+    margin-bottom: var(--space-section);
+  }
+}
+
+.leftCol {
+  width: 100%;
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .leftCol {
+    width: 58.333333%;
+    padding-inline: 0;
+  }
+}
+
+.heading {
+  color: var(--color-on-primary);
+  margin-bottom: var(--space-md);
+  pointer-events: auto;
+  font-size: 36px;
+}
+
+@media (min-width: 640px) {
+  .heading {
+    font-size: var(--text-display);
+  }
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 56px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 30px;
+  }
+}
+
+.subheading {
+  color: var(--color-surface-cool);
+  margin-bottom: var(--space-xl);
+  pointer-events: auto;
+  max-width: 480px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+@media (min-width: 640px) {
+  .subheading {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .subheading {
+    font-size: var(--text-subtitle);
+  }
+}
+
+.marker {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+}
+
+.marker::after {
+  content: '';
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -6px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'%3E%3Cpath d='M5 15 Q 50 0, 95 15' stroke='%234ade80' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+  transform: rotate(-1deg);
+}
+
+.ctas {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  flex-wrap: wrap;
+  pointer-events: auto; /* allow clicking buttons */
+}
+
+.rightCol {
+  width: 100%;
+  margin-top: var(--space-xl);
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .rightCol {
+    width: 41.666667%; /* 5 columns */
+    margin-top: 0;
+    margin-left: 8.333333%; /* 1 col offset */
+    padding-inline: 0;
+  }
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  pointer-events: auto; /* allow clicking tabs */
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  group: true;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+
+.tab:hover {
+  opacity: 1;
+}
+
+.tabActive {
+  opacity: 1;
+}
+
+.tabLabel {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-on-primary);
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+@media (min-width: 640px) {
+  .tabLabel {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 768px) {
+  .tabLabel {
+    font-size: var(--text-subtitle);
+  }
+}
+
+.tabIcon {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s ease;
+  margin-left: var(--space-xs);
+}
+
+.tab:hover .tabIcon,
+.tabActive .tabIcon {
+  opacity: 1;
+  transform: translateX(0);
+}

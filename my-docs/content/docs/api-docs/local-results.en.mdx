@@ -1,0 +1,114 @@
+---
+title: Google Maps Local Results API
+description: GET /api/maps/search — Search for places near a location
+---
+
+Search for businesses and places by keyword and location. Returns a list of matching places with ratings, pricing, hours, and more.
+
+## Endpoint
+
+`GET /api/maps/search`
+
+## Headers
+
+| Name | Value | Required |
+|------|-------|----------|
+| `x-api-key` | Your API key | Yes |
+
+## Query Parameters
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `q` | string | Yes | — | Search query text |
+| `lat` | number | No | `10.801671` | Latitude for search center |
+| `lng` | number | No | `106.61744` | Longitude for search center |
+
+## Example Request
+
+```bash
+curl "https://api.piso.dev/api/maps/search?q=highland&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Example Response
+
+```json
+{
+  "local_result": [
+    {
+      "data_id": "0x31752bb396ca47f9:0x237d4c6fae045dd9",
+      "place_id": "ChIJ-fGSpjOo1jERVN0ErG9MfSM",
+      "title": "Highlands Coffee",
+      "type": "cafe",
+      "rating": 4.2,
+      "reviews": 1234,
+      "pricing": {
+        "min": 30000,
+        "max": 65000
+      },
+      "contacts": {
+        "phone": "02838277979",
+        "website": "https://highlandscoffee.com.vn"
+      },
+      "location": {
+        "latitude": 10.7765,
+        "longitude": 106.7008,
+        "timezone": "Asia/Ho_Chi_Minh",
+        "country_code": "VN",
+        "address": {
+          "full": "135 Hai Bà Trưng, Bến Nghé, Quận 1, Hồ Chí Minh, Vietnam",
+          "street": "135 Hai Bà Trưng",
+          "ward": "Bến Nghé",
+          "city": "Quận 1",
+          "country": "Việt Nam"
+        }
+      },
+      "open_state": {
+        "is_open_now": true,
+        "text": "Open"
+      },
+      "opening_hours": [
+        {
+          "day": "Monday",
+          "hours": "07:00–22:00"
+        }
+      ],
+      "features": {
+        "accessibility": ["Wheelchair-accessible entrance"],
+        "parking": ["Free parking lot"],
+        "payments": ["Debit cards", "Credit cards"],
+        "service_options": ["Dine-in", "Takeaway", "Delivery"],
+        "other": []
+      }
+    }
+  ]
+}
+```
+
+## Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `local_result` | array | List of matching places |
+| `local_result[].data_id` | string | Internal ID used for Place Detail |
+| `local_result[].place_id` | string | Google Maps place ID |
+| `local_result[].title` | string | Place name |
+| `local_result[].type` | string | Category (e.g. cafe, restaurant) |
+| `local_result[].rating` | number | Average rating (1.0–5.0) |
+| `local_result[].reviews` | integer | Total review count |
+| `local_result[].pricing` | object | Price range: `{ min, max }` |
+| `local_result[].contacts` | object | Contact info: `{ phone, website }` |
+| `local_result[].location` | object | Location data (lat, lng, address, timezone, country_code) |
+| `local_result[].location.address` | object | Structured address: `{ full, street, ward, city, country }` |
+| `local_result[].open_state` | object | Current open status: `{ is_open_now, text }` |
+| `local_result[].opening_hours` | array | Weekly hours: `[{ day, hours }]` |
+| `local_result[].features` | object | Place features (accessibility, parking, payments, service_options) |
+
+## Errors
+
+| Status | Meaning |
+|--------|---------|
+| 401 | Missing or invalid API key |
+| 422 | Invalid or missing query parameter |
+| 429 | Rate limit exceeded |
+| 500 | Internal server error |

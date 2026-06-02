@@ -1,0 +1,180 @@
+---
+title: Google Maps Place Results API
+description: GET /api/maps/place — Get full details about a place
+---
+
+Retrieve comprehensive information about a place including description, reviews, menu, photos, popular times, and more.
+
+## Endpoint
+
+`GET /api/maps/place`
+
+## Headers
+
+| Name | Value | Required |
+|------|-------|----------|
+| `x-api-key` | Your API key | Yes |
+
+## Query Parameters
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `data_id` | string | Yes | — | Place identifier from Autocomplete or Search |
+| `lat` | number | No | `10.801671` | Latitude for location context |
+| `lng` | number | No | `106.61744` | Longitude for location context |
+
+## Example Request
+
+```bash
+curl "https://api.piso.dev/api/maps/place?data_id=0x31752bb396ca47f9:0x237d4c6fae045dd9&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Example Response
+
+```json
+{
+  "place_result": {
+    "data_id": "0x31752bb396ca47f9:0x237d4c6fae045dd9",
+    "place_id": "ChIJ-fGSpjOo1jERVN0ErG9MfSM",
+    "title": "Highlands Coffee",
+    "description": "Highlands Coffee is a Vietnamese coffee chain offering a variety of coffee drinks, smoothies, and snacks in a cozy atmosphere.",
+    "type": "cafe",
+    "rating": 4.2,
+    "reviews": 1234,
+    "pricing": {
+      "min": 30000,
+      "max": 65000
+    },
+    "contacts": {
+      "phone": "02838277979",
+      "website": "https://highlandscoffee.com.vn"
+    },
+    "location": {
+      "latitude": 10.7765,
+      "longitude": 106.7008,
+      "timezone": "Asia/Ho_Chi_Minh",
+      "country_code": "VN",
+      "address": {
+        "full": "135 Hai Bà Trưng, Bến Nghé, Quận 1, Hồ Chí Minh, Vietnam",
+        "street": "135 Hai Bà Trưng",
+        "ward": "Bến Nghé",
+        "city": "Quận 1",
+        "country": "Việt Nam"
+      }
+    },
+    "open_state": {
+      "is_open_now": true,
+      "text": "Open"
+    },
+    "opening_hours": [
+      {
+        "day": "Monday",
+        "hours": "07:00–22:00"
+      }
+    ],
+    "features": {
+      "accessibility": ["Wheelchair-accessible entrance"],
+      "parking": ["Free parking lot"],
+      "payments": ["Debit cards", "Credit cards"],
+      "service_options": ["Dine-in", "Takeaway", "Delivery"],
+      "other": []
+    },
+    "popular_times": [
+      {
+        "day": "Monday",
+        "hours": [
+          {
+            "hour": 10,
+            "occupancy_percent": 45,
+            "status": "normal",
+            "time_label": "10:00"
+          }
+        ]
+      }
+    ],
+    "review_list": [
+      {
+        "review_id": "abc123",
+        "author_name": "Nguyễn Văn A",
+        "author_profile_pic": "https://lh3.googleusercontent.com/...",
+        "rating": 5,
+        "relative_date": "a month ago",
+        "text": "Great coffee and nice atmosphere. Highly recommended!",
+        "photos": [
+          {
+            "id": "photo1",
+            "url": "https://lh3.googleusercontent.com/...",
+            "width": 800,
+            "height": 600
+          }
+        ]
+      }
+    ],
+    "menu": [
+      {
+        "dish_name": "Cà phê sữa đá",
+        "media": [
+          {
+            "id": "menu1",
+            "url": "https://lh3.googleusercontent.com/...",
+            "width": 400,
+            "height": 400
+          }
+        ]
+      }
+    ],
+    "photos": [
+      {
+        "category_id": "cat1",
+        "category_label": "Interior",
+        "media": [
+          {
+            "id": "photo2",
+            "url": "https://lh3.googleusercontent.com/...",
+            "width": 1200,
+            "height": 900
+          }
+        ]
+      }
+    ],
+    "google_maps_url": "https://www.google.com/maps/place/...",
+    "global_plus_code": "7P28QQ8R+9G"
+  }
+}
+```
+
+## Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `place_result` | object | Full place detail object |
+| `place_result.data_id` | string | Internal place identifier |
+| `place_result.place_id` | string | Google Maps place ID |
+| `place_result.title` | string | Place name |
+| `place_result.description` | string | Place description |
+| `place_result.type` | string | Category (e.g. cafe, restaurant) |
+| `place_result.rating` | number | Average rating (1.0–5.0) |
+| `place_result.reviews` | integer | Total review count |
+| `place_result.pricing` | object | Price range `{ min, max }` |
+| `place_result.pricing_ranges` | array | Detailed pricing tiers |
+| `place_result.contacts` | object | `{ phone, website }` |
+| `place_result.location` | object | Location data (lat, lng, address, timezone, country_code) |
+| `place_result.open_state` | object | Current status `{ is_open_now, text }` |
+| `place_result.opening_hours` | array | Weekly hours `[{ day, hours }]` |
+| `place_result.features` | object | Accessibility, parking, payments, service_options |
+| `place_result.popular_times` | array | Busyness per hour by day |
+| `place_result.review_list` | array | User reviews with author, rating, text, photos |
+| `place_result.menu` | array | Menu items with dish name and photos |
+| `place_result.photos` | array | Categorized photo gallery |
+| `place_result.google_maps_url` | string | Link to the place on Google Maps |
+| `place_result.global_plus_code` | string | Plus code for the location |
+
+## Errors
+
+| Status | Meaning |
+|--------|---------|
+| 401 | Missing or invalid API key |
+| 422 | Invalid or missing query parameter |
+| 429 | Rate limit exceeded |
+| 500 | Internal server error |

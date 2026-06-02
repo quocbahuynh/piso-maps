@@ -1,0 +1,12 @@
+.topCards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 1024px) {
+  .topCards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

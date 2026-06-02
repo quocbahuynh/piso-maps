@@ -1,0 +1,27 @@
+{
+  "name": "cloakmap-backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "harvest-sessions": "tsx src/jobs/harvest-sessions.ts",
+    "test-proxies": "tsx src/jobs/test-proxies.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.16.0",
+    "cloakbrowser": "^0.3.31",
+    "dotenv": "^17.4.2",
+    "https-proxy-agent": "^9.0.0",
+    "mmdb-lib": "^3.0.2",
+    "p-limit": "^7.3.0",
+    "puppeteer-core": "^25.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^25.7.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}

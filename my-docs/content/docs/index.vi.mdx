@@ -1,0 +1,39 @@
+---
+title: Bắt đầu nhanh
+description: PISO Maps API — thu thập dữ liệu Google Maps với 3 endpoint đơn giản
+---
+
+PISO Maps API cung cấp quyền truy cập lập trình vào dữ liệu Google Maps thông qua ba endpoint: **Autocomplete**, **Search** và **Place Detail**.
+
+## Bắt đầu
+
+1. Truy cập dashboard và đăng ký bằng email của bạn.
+2. Sao chép **API key** từ dashboard.
+3. Thêm nó vào header `x-api-key` trong mỗi yêu cầu API.
+
+Thử một cuộc gọi:
+
+```bash
+curl "https://api.piso.dev/api/maps/autocomplete?q=highland&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Các endpoint
+
+<Cards>
+  <Card
+    title="Google Maps Autocomplete API"
+    description="GET /api/maps/autocomplete — Lấy gợi ý địa điểm từ truy vấn một phần."
+    href="/api-docs/autocomplete"
+  />
+  <Card
+    title="Google Maps Local Results API"
+    description="GET /api/maps/search — Tìm kiếm địa điểm gần một vị trí."
+    href="/api-docs/local-results"
+  />
+  <Card
+    title="Google Maps Place Results API"
+    description="GET /api/maps/place — Lấy thông tin chi tiết về một địa điểm."
+    href="/api-docs/place-detail"
+  />
+</Cards>

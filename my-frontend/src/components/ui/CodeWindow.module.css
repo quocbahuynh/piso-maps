@@ -1,0 +1,99 @@
+.window {
+  width: 100%;
+  height: 280px;
+  background-color: var(--color-scrim);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  /* Lock user interaction */
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 640px) {
+  .window {
+    height: 200px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-stone);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.language {
+  font-family: monospace;
+  font-size: 11px;
+  color: var(--color-stone);
+  text-transform: uppercase;
+}
+
+.body {
+  padding: 24px;
+  overflow: hidden; /* Hide scrollbars completely since user can't interact anyway */
+  background-color: transparent;
+  flex: 1;
+}
+
+.pre {
+  margin: 0;
+}
+
+.code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-size: 12px; /* Adjusted to be smaller as requested */
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* Vibrant Syntax Highlighting Colors */
+:global(.keyword) {
+  color: #fbbf24; /* Neon Yellow/Amber */
+}
+:global(.string) {
+  color: #a3e635; /* Neon Lime Green */
+}
+:global(.property) {
+  color: #38bdf8; /* Vibrant Sky Blue */
+}
+:global(.number) {
+  color: #f472b6; /* Neon Pink */
+}
+:global(.url) {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+:global(.function) {
+  color: #38bdf8;
+}
+:global(.class) {
+  color: #f472b6;
+}

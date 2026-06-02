@@ -1,0 +1,69 @@
+---
+title: Google Maps Autocomplete API
+description: GET /api/maps/autocomplete — Get place suggestions from a partial query
+---
+
+Suggest places as the user types. Returns a list of matching locations with coordinates and identifiers.
+
+## Endpoint
+
+`GET /api/maps/autocomplete`
+
+## Headers
+
+| Name | Value | Required |
+|------|-------|----------|
+| `x-api-key` | Your API key | Yes |
+
+## Query Parameters
+
+| Name | Type | Required | Default | Description |
+|------|------|----------|---------|-------------|
+| `q` | string | Yes | — | Search query text |
+| `lat` | number | No | `10.801671` | Latitude for location bias |
+| `lng` | number | No | `106.61744` | Longitude for location bias |
+
+## Example Request
+
+```bash
+curl "https://api.piso.dev/api/maps/autocomplete?q=highland&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Example Response
+
+```json
+{
+  "suggestions": [
+    {
+      "value": "Highlands Coffee",
+      "subtext": "135 Hai Bà Trưng, Bến Nghé, Quận 1",
+      "latitude": 10.7765,
+      "longitude": 106.7008,
+      "data_id": "0x31752bb396ca47f9:0x237d4c6fae045dd9",
+      "place_id": "ChIJ-fGSpjOo1jERVN0ErG9MfSM"
+    }
+  ]
+}
+```
+
+## Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `suggestions` | array | List of place suggestions |
+| `suggestions[].value` | string | Display name of the place |
+| `suggestions[].subtext` | string | Address or area description |
+| `suggestions[].latitude` | number | Latitude |
+| `suggestions[].longitude` | number | Longitude |
+| `suggestions[].data_id` | string | Internal ID used for Place Detail |
+| `suggestions[].place_id` | string | Google Maps place ID |
+
+## Errors
+
+| Status | Meaning |
+|--------|---------|
+| 401 | Missing or invalid API key |
+| 422 | Invalid or missing query parameter |
+| 429 | Rate limit exceeded |
+| 500 | Internal server error |

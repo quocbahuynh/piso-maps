@@ -1,0 +1,100 @@
+.section {
+  padding-block: var(--space-section-lg);
+  background-color: var(--color-canvas);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 600px;
+  margin-bottom: var(--space-section-lg);
+}
+
+.eyebrow {
+  color: var(--color-slate);
+}
+
+.heading {
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.subheading {
+  font-size: var(--text-body);
+  color: var(--color-graphite);
+  line-height: 1.5;
+}
+
+.rowsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-section-lg);
+}
+
+/* Base row layout for mobile (stacking) */
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.mediaCol {
+  width: 100%;
+}
+
+/* Code Window Container */
+.codeWrapper {
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05); /* Soft shadow to lift it off the canvas */
+}
+
+.textCol {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.title {
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.description {
+  font-size: var(--text-body);
+  color: var(--color-graphite);
+  line-height: 1.5;
+}
+
+.action {
+  margin-top: var(--space-xs);
+}
+
+/* Desktop layout: 12-column grid, 5/7 split */
+@media (min-width: 1024px) {
+  .row {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  /* Default: image left (6), text right (5) */
+  .mediaCol {
+    grid-column: span 6;
+  }
+  .textCol {
+    grid-column: 8 / span 5; /* Leave 1 col gap in the middle */
+  }
+
+  /* Reversed: image right (6), text left (5) */
+  .rowReverse .mediaCol {
+    grid-column: 7 / span 6;
+    grid-row: 1; /* Keep it on the same line */
+  }
+  .rowReverse .textCol {
+    grid-column: span 5;
+    grid-row: 1;
+  }
+}

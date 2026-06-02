@@ -1,0 +1,39 @@
+---
+title: Quick start
+description: PISO Maps API — scrape Google Maps data with 3 simple endpoints
+---
+
+PISO Maps API gives you programmatic access to Google Maps data through three endpoints: **Autocomplete**, **Search**, and **Place Detail**.
+
+## Getting Started
+
+1. Go to your dashboard and sign up with your email.
+2. Copy your **API key** from the dashboard.
+3. Include it as the `x-api-key` header on every API request.
+
+Make a test call:
+
+```bash
+curl "https://api.piso.dev/api/maps/autocomplete?q=highland&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Endpoints
+
+<Cards>
+  <Card
+    title="Google Maps Autocomplete API"
+    description="GET /api/maps/autocomplete — Get place suggestions from a partial query."
+    href="/api-docs/autocomplete"
+  />
+  <Card
+    title="Google Maps Local Results API"
+    description="GET /api/maps/search — Search for places near a location."
+    href="/api-docs/local-results"
+  />
+  <Card
+    title="Google Maps Place Results API"
+    description="GET /api/maps/place — Get full detail about a place."
+    href="/api-docs/place-detail"
+  />
+</Cards>

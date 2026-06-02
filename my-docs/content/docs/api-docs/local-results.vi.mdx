@@ -1,0 +1,114 @@
+---
+title: Google Maps Local Results API
+description: GET /api/maps/search — Tìm kiếm địa điểm gần một vị trí
+---
+
+Tìm kiếm doanh nghiệp và địa điểm theo từ khóa và vị trí. Trả về danh sách các địa điểm phù hợp kèm đánh giá, giá cả, giờ mở cửa và nhiều thông tin khác.
+
+## Endpoint
+
+`GET /api/maps/search`
+
+## Headers
+
+| Name | Value | Required |
+|------|-------|----------|
+| `x-api-key` | API key của bạn | Có |
+
+## Tham số truy vấn
+
+| Name | Type | Required | Default | Mô tả |
+|------|------|----------|---------|-------|
+| `q` | string | Có | — | Nội dung tìm kiếm |
+| `lat` | number | Không | `10.801671` | Vĩ độ cho trung tâm tìm kiếm |
+| `lng` | number | Không | `106.61744` | Kinh độ cho trung tâm tìm kiếm |
+
+## Ví dụ yêu cầu
+
+```bash
+curl "https://api.piso.dev/api/maps/search?q=highland&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Ví dụ phản hồi
+
+```json
+{
+  "local_result": [
+    {
+      "data_id": "0x31752bb396ca47f9:0x237d4c6fae045dd9",
+      "place_id": "ChIJ-fGSpjOo1jERVN0ErG9MfSM",
+      "title": "Highlands Coffee",
+      "type": "cafe",
+      "rating": 4.2,
+      "reviews": 1234,
+      "pricing": {
+        "min": 30000,
+        "max": 65000
+      },
+      "contacts": {
+        "phone": "02838277979",
+        "website": "https://highlandscoffee.com.vn"
+      },
+      "location": {
+        "latitude": 10.7765,
+        "longitude": 106.7008,
+        "timezone": "Asia/Ho_Chi_Minh",
+        "country_code": "VN",
+        "address": {
+          "full": "135 Hai Bà Trưng, Bến Nghé, Quận 1, Hồ Chí Minh, Vietnam",
+          "street": "135 Hai Bà Trưng",
+          "ward": "Bến Nghé",
+          "city": "Quận 1",
+          "country": "Việt Nam"
+        }
+      },
+      "open_state": {
+        "is_open_now": true,
+        "text": "Đang mở cửa"
+      },
+      "opening_hours": [
+        {
+          "day": "Thứ Hai",
+          "hours": "07:00–22:00"
+        }
+      ],
+      "features": {
+        "accessibility": ["Lối vào cho xe lăn"],
+        "parking": ["Bãi đỗ xe miễn phí"],
+        "payments": ["Thẻ ghi nợ", "Thẻ tín dụng"],
+        "service_options": ["Dùng tại chỗ", "Mang đi", "Giao hàng"],
+        "other": []
+      }
+    }
+  ]
+}
+```
+
+## Các trường phản hồi
+
+| Field | Type | Mô tả |
+|-------|------|-------|
+| `local_result` | array | Danh sách các địa điểm phù hợp |
+| `local_result[].data_id` | string | ID nội bộ dùng cho Place Detail |
+| `local_result[].place_id` | string | Google Maps place ID |
+| `local_result[].title` | string | Tên địa điểm |
+| `local_result[].type` | string | Danh mục (ví dụ: cafe, nhà hàng) |
+| `local_result[].rating` | number | Đánh giá trung bình (1.0–5.0) |
+| `local_result[].reviews` | integer | Tổng số lượt đánh giá |
+| `local_result[].pricing` | object | Khoảng giá: `{ min, max }` |
+| `local_result[].contacts` | object | Thông tin liên hệ: `{ phone, website }` |
+| `local_result[].location` | object | Dữ liệu vị trí (lat, lng, địa chỉ, timezone, country_code) |
+| `local_result[].location.address` | object | Địa chỉ có cấu trúc: `{ full, street, ward, city, country }` |
+| `local_result[].open_state` | object | Trạng thái hiện tại: `{ is_open_now, text }` |
+| `local_result[].opening_hours` | array | Giờ mở cửa hàng tuần: `[{ day, hours }]` |
+| `local_result[].features` | object | Tiện nghi (accessibility, parking, payments, service_options) |
+
+## Lỗi
+
+| Status | Ý nghĩa |
+|--------|---------|
+| 401 | Thiếu hoặc không hợp lệ API key |
+| 422 | Tham số truy vấn không hợp lệ hoặc thiếu |
+| 429 | Vượt quá giới hạn tốc độ |
+| 500 | Lỗi máy chủ nội bộ |

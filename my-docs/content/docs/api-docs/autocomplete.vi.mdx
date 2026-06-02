@@ -1,0 +1,69 @@
+---
+title: Google Maps Autocomplete API
+description: GET /api/maps/autocomplete — Lấy gợi ý địa điểm từ truy vấn một phần
+---
+
+Gợi ý địa điểm khi người dùng nhập. Trả về danh sách các địa điểm phù hợp kèm tọa độ và định danh.
+
+## Endpoint
+
+`GET /api/maps/autocomplete`
+
+## Headers
+
+| Name | Value | Required |
+|------|-------|----------|
+| `x-api-key` | API key của bạn | Có |
+
+## Tham số truy vấn
+
+| Name | Type | Required | Default | Mô tả |
+|------|------|----------|---------|-------|
+| `q` | string | Có | — | Nội dung tìm kiếm |
+| `lat` | number | Không | `10.801671` | Vĩ độ cho vị trí ưu tiên |
+| `lng` | number | Không | `106.61744` | Kinh độ cho vị trí ưu tiên |
+
+## Ví dụ yêu cầu
+
+```bash
+curl "https://api.piso.dev/api/maps/autocomplete?q=highland&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Ví dụ phản hồi
+
+```json
+{
+  "suggestions": [
+    {
+      "value": "Highlands Coffee",
+      "subtext": "135 Hai Bà Trưng, Bến Nghé, Quận 1",
+      "latitude": 10.7765,
+      "longitude": 106.7008,
+      "data_id": "0x31752bb396ca47f9:0x237d4c6fae045dd9",
+      "place_id": "ChIJ-fGSpjOo1jERVN0ErG9MfSM"
+    }
+  ]
+}
+```
+
+## Các trường phản hồi
+
+| Field | Type | Mô tả |
+|-------|------|-------|
+| `suggestions` | array | Danh sách các gợi ý địa điểm |
+| `suggestions[].value` | string | Tên hiển thị của địa điểm |
+| `suggestions[].subtext` | string | Địa chỉ hoặc khu vực mô tả |
+| `suggestions[].latitude` | number | Vĩ độ |
+| `suggestions[].longitude` | number | Kinh độ |
+| `suggestions[].data_id` | string | ID nội bộ dùng cho Place Detail |
+| `suggestions[].place_id` | string | Google Maps place ID |
+
+## Lỗi
+
+| Status | Ý nghĩa |
+|--------|---------|
+| 401 | Thiếu hoặc không hợp lệ API key |
+| 422 | Tham số truy vấn không hợp lệ hoặc thiếu |
+| 429 | Vượt quá giới hạn tốc độ |
+| 500 | Lỗi máy chủ nội bộ |

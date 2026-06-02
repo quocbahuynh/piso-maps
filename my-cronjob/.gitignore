@@ -1,0 +1,26 @@
+# Dependencies & Build Output
+node_modules
+dist
+*.tsbuildinfo
+
+# Environment & Credentials
+.env
+.env.*
+
+# Sensitive Data & Local Configs
+proxies.txt
+*proxies.txt
+google-sessions.json
+data/
+*.json.bak
+
+# Logs & Debug
+*.log
+npm-debug.log*
+
+# System & IDE Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.cache/

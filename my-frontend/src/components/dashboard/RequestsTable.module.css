@@ -1,0 +1,109 @@
+.card {
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-xl);
+  overflow: hidden;
+}
+
+.header {
+  padding: var(--space-xl);
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: -0.9px;
+  color: var(--color-ink);
+  margin: 0 0 var(--space-xs);
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-graphite);
+  margin: 0;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.th {
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-slate);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: #fafafa;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.td {
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-ink);
+  border-bottom: 1px solid var(--color-hairline-soft);
+}
+
+.tr:last-child .td {
+  border-bottom: none;
+}
+
+.methodGet {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background-color: #f0fdf4;
+  color: #166534;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.methodPost {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background-color: #eff6ff;
+  color: #1e3a8a;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.statusSuccess {
+  color: #16a34a;
+  font-family: monospace;
+}
+
+.statusError {
+  color: #dc2626;
+  font-family: monospace;
+}
+
+.endpoint {
+  font-family: monospace;
+  color: var(--color-graphite);
+  font-size: 13px;
+}
+
+.message {
+  padding: var(--space-xl);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-slate);
+}

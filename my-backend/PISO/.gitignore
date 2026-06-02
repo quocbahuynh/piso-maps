@@ -1,0 +1,48 @@
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+bin/
+obj/
+packages/
+*.nupkg
+
+# Publish output
+publish/
+*.Publish.xml
+
+# NLog
+logs/
+internal-nlog.txt
+nlog-own-*.txt
+
+# macOS
+.DS_Store
+
+# Rider
+riderModule.iml
+/_ReSharper.Caches/
+
+# Firebase credentials (DO NOT COMMIT)
+firebase-credentials.json
+
+# Environments
+.env
+.env.local
+.env.*.local
+
+# Development settings (contains local secret overrides)
+appsettings.Development.json
+
+# Data files (proxies, sessions, credentials)
+Data/proxy.txt
+Data/google-sessions.json
+
+# Runtime logs
+run_output.log
+

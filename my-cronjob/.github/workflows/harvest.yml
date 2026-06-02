@@ -1,0 +1,60 @@
+name: Harvest Sessions
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install system deps (Chromium)
+        run: >
+          sudo apt-get update -qq &&
+          sudo apt-get install -y -qq
+          libgtk-3-0 libnotify-dev libnss3 libxss1
+          libdrm2 libasound2t64 xvfb
+
+      - name: Cache CloakBrowser binary
+        uses: actions/cache@v4
+        id: cloak-cache
+        with:
+          path: ~/.cloakbrowser
+          key: cloakbrowser-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - run: npm ci
+
+      - name: Decode proxies
+        run: echo "${{ secrets.PROXIES_B64 }}" | base64 -d > data/proxies.txt
+
+      - name: Create .env
+        run: |
+          echo "HARVEST_COUNT=${HARVEST_COUNT:-20}" > .env
+          echo "HARVEST_HEADLESS=true" >> .env
+          echo "HARVEST_HUMAN_PRESET=default" >> .env
+          echo "GEOIP_ENABLED=true" >> .env
+        env:
+          HARVEST_COUNT: ${{ secrets.HARVEST_COUNT || '20' }}
+
+      - run: npm run harvest-sessions
+
+      - name: Commit sessions
+        run: |
+          git config user.name "harvester-bot"
+          git config user.email "bot@example.com"
+          git add data/sessions.json
+          git diff --staged --exit-code || \
+            git commit -m "chore: update sessions [skip ci]" && \
+            git push

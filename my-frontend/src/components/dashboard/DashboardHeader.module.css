@@ -1,0 +1,134 @@
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-hairline);
+  background-color: var(--color-canvas);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.leftGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.logo {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--color-ink);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.logoDot {
+  color: #4ade80;
+  font-size: 22px;
+  line-height: 0;
+  margin-left: 1px;
+}
+
+.docsLink {
+  font-size: var(--text-link-sm);
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.docsLink:hover {
+  color: var(--color-ink);
+}
+
+.rightGroup {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-on-primary);
+  flex-shrink: 0;
+}
+
+.userInfo {
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+@media (min-width: 768px) {
+  .userInfo {
+    display: flex;
+  }
+}
+
+.userEmail {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+
+.planBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-slate);
+  line-height: 1;
+}
+
+.planDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #4ade80;
+  flex-shrink: 0;
+}
+
+.logoutButton {
+  background: none;
+  border: none;
+  color: var(--color-slate);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: var(--color-hairline);
+  color: var(--color-ink);
+}

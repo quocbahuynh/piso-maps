@@ -1,0 +1,5 @@
+{
+  "title": "API Documentation",
+  "defaultOpen": true,
+  "pages": ["autocomplete", "local-results", "place-detail"]
+}

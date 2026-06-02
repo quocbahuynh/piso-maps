@@ -1,0 +1,127 @@
+.footer {
+  background-color: var(--color-footer);
+  color: var(--color-on-primary);
+  padding-block: var(--space-section);
+}
+
+.grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  padding-bottom: var(--space-section);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-right: var(--space-xl);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--color-on-primary);
+}
+
+.logoDot {
+  color: #4ade80;
+  font-size: 24px;
+  line-height: 0;
+  margin-left: 1px;
+}
+
+.tagline {
+  font-size: var(--text-meta);
+  color: var(--color-stone);
+  line-height: 1.5;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.eyebrow {
+  color: var(--color-stone);
+  letter-spacing: var(--tracking-micro-caps);
+}
+
+.linkList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.link {
+  font-size: var(--text-body);
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+
+.link:hover {
+  color: var(--color-on-primary);
+}
+
+/* Bottom strip */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.copyright {
+  font-size: var(--text-meta);
+  color: var(--color-stone);
+}
+
+.bottomLinks {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.bottomLink {
+  font-size: var(--text-meta);
+  color: var(--color-stone);
+  text-decoration: none;
+  transition: color 0.12s ease;
+}
+
+.bottomLink:hover {
+  color: var(--color-on-primary);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .brand {
+    grid-column: 1 / -1;
+    padding-right: 0;
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

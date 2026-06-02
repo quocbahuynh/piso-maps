@@ -1,0 +1,7 @@
+﻿services:
+  piso.webapp:
+    image: piso.webapp
+    build:
+      context: .
+      dockerfile: PISO.WebApp/Dockerfile
+

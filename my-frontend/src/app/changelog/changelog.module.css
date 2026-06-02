@@ -1,0 +1,131 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  padding-top: 64px;
+}
+
+.main {
+  flex: 1;
+  padding-block: var(--space-section);
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-xxl);
+}
+
+.eyebrow {
+  color: var(--color-slate);
+  margin-bottom: var(--space-sm);
+}
+
+.title {
+  margin-bottom: var(--space-md);
+  font-size: var(--text-heading-md);
+  letter-spacing: var(--tracking-heading-md);
+}
+
+.lead {
+  font-size: var(--text-body);
+  color: var(--color-slate-soft);
+  line-height: 1.6;
+}
+
+.timeline {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  padding-left: var(--space-xl);
+  border-left: 1px solid var(--color-hairline);
+}
+
+.release {
+  position: relative;
+  margin-bottom: var(--space-xxl);
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-ink);
+  border-radius: var(--radius-full);
+  position: absolute;
+  left: calc(-1 * var(--space-xl) - 5px);
+  top: 6px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.version {
+  font-size: var(--text-link-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.date {
+  font-size: var(--text-meta);
+  color: var(--color-slate);
+}
+
+.releaseTitle {
+  font-size: var(--text-subtitle);
+  margin-bottom: var(--space-md);
+  color: var(--color-ink);
+}
+
+.desc {
+  font-size: var(--text-body);
+  color: var(--color-slate-soft);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.changeList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+}
+
+.changeItem {
+  font-size: var(--text-meta);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  line-height: 1.5;
+}
+
+.tag {
+  font-size: var(--text-micro-caps);
+  padding: 2px 6px;
+  border-radius: var(--radius-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.tagAdded {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.tagFixed {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+.tagImproved {
+  background-color: #fef9c3;
+  color: #854d0e;
+}

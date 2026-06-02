@@ -1,0 +1,46 @@
+.card {
+  background-color: var(--color-canvas);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-slate);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.value {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--color-ink);
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.trend {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--color-slate);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.trendUp {
+  color: #27c93f; /* Subtle green */
+}
+
+.trendDown {
+  color: #ff5f56; /* Subtle red */
+}

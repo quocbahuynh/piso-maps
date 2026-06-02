@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="16.1.1" />
+        <PackageReference Include="Hangfire.AspNetCore" Version="1.8.*" />
+        <PackageReference Include="Hangfire.Redis.StackExchange" Version="1.12.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.*" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.23" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.8" />
+        <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.14.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
+      <Content Update="Data/google-sessions.json" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\PISO.Entities\PISO.Entities.csproj" />
+      <ProjectReference Include="..\PISO.Contracts\PISO.Contracts.csproj" />
+      <ProjectReference Include="..\PISO.LoggerService\PISO.LoggerService.csproj" />
+      <ProjectReference Include="..\PISO.Repository\PISO.Repository.csproj" />
+      <ProjectReference Include="..\PISO.Presentation\PISO.Presentation.csproj" />
+      <ProjectReference Include="..\PISO.Service\PISO.Service.csproj" />
+      <ProjectReference Include="..\PISO.Shared\PISO.Shared.csproj" />
+      <ProjectReference Include="..\PISO.RedisService\PISO.RedisService.csproj" />
+      <ProjectReference Include="..\PISO.HangfireService\PISO.HangfireService.csproj" />
+      <ProjectReference Include="..\PISO.GoogleMapService\PISO.GoogleMapService.csproj" />
+    </ItemGroup>
+
+</Project>

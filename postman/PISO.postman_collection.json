@@ -1,0 +1,204 @@
+{
+  "info": {
+    "name": "PISO API",
+    "description": "Google Maps data API — autocomplete, search, place detail, and user management.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5143",
+      "type": "string"
+    },
+    {
+      "key": "api_key",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "lat",
+      "value": "10.823",
+      "type": "string"
+    },
+    {
+      "key": "lng",
+      "value": "106.629",
+      "type": "string"
+    },
+    {
+      "key": "data_id",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Autocomplete",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/maps/autocomplete?q=coffee&lat={{lat}}&lng={{lng}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "maps", "autocomplete"],
+          "query": [
+            { "key": "q", "value": "coffee" },
+            { "key": "lat", "value": "{{lat}}" },
+            { "key": "lng", "value": "{{lng}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/maps/search?q=coffee&lat={{lat}}&lng={{lng}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "maps", "search"],
+          "query": [
+            { "key": "q", "value": "coffee" },
+            { "key": "lat", "value": "{{lat}}" },
+            { "key": "lng", "value": "{{lng}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Place Detail",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/maps/place?data_id={{data_id}}&lat={{lat}}&lng={{lng}}",
+          "host": ["{{base_url}}"],
+          "path": ["api", "maps", "place"],
+          "query": [
+            { "key": "data_id", "value": "{{data_id}}" },
+            { "key": "lat", "value": "{{lat}}" },
+            { "key": "lng", "value": "{{lng}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sign Up",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"firebase-uid\",\n  \"email\": \"user@example.com\",\n  \"displayName\": \"User Name\",\n  \"photoUrl\": \"https://example.com/avatar.png\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/users/signup",
+          "host": ["{{base_url}}"],
+          "path": ["api", "users", "signup"]
+        }
+      }
+    },
+    {
+      "name": "Get Profile",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/users/profile",
+          "host": ["{{base_url}}"],
+          "path": ["api", "users", "profile"]
+        }
+      }
+    },
+    {
+      "name": "Regenerate API Key",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/users/regenerate-key",
+          "host": ["{{base_url}}"],
+          "path": ["api", "users", "regenerate-key"]
+        }
+      }
+    },
+    {
+      "name": "Usage Logs",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/users/logs",
+          "host": ["{{base_url}}"],
+          "path": ["api", "users", "logs"]
+        }
+      }
+    },
+    {
+      "name": "Daily Usage",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "x-api-key",
+            "value": "{{api_key}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/users/daily-usage",
+          "host": ["{{base_url}}"],
+          "path": ["api", "users", "daily-usage"]
+        }
+      }
+    }
+  ]
+}

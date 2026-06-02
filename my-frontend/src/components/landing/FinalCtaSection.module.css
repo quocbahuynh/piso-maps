@@ -1,0 +1,104 @@
+.section {
+  padding-bottom: var(--space-section-lg);
+  background-color: var(--color-canvas); /* The outer page is canvas */
+}
+
+/* Contained cinematic panel */
+.panel {
+  position: relative;
+  background-color: var(--color-scrim);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xxl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 480px;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    min-height: 320px;
+    padding: var(--space-xl);
+  }
+}
+
+@media (min-width: 768px) {
+  .panel {
+    padding: var(--space-section);
+  }
+}
+
+/* Spline Embed Wrapper */
+.splineWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.splineIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none; /* Keep the animation purely decorative so it doesn't block clicks */
+  
+  /* Zoom in by 15% and push it slightly down to hide the watermark, keeping it horizontally centered */
+  transform-origin: center center;
+  transform: scale(1.15) translateY(4%);
+}
+
+/* Attempt to hide the logo directly if it's rendered in the DOM */
+.splineWrapper :global(a) {
+  display: none !important;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Darkens the 3D model slightly for text contrast */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.eyebrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.heading {
+  color: var(--color-on-primary);
+  max-width: 800px;
+  margin: 0;
+}
+
+.subheading {
+  font-size: var(--text-subtitle);
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 560px;
+  line-height: 1.5;
+}
+
+.ctas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-top: var(--space-sm);
+}

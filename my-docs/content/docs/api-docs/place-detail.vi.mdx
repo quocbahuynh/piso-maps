@@ -1,0 +1,180 @@
+---
+title: Google Maps Place Results API
+description: GET /api/maps/place — Lấy thông tin chi tiết về một địa điểm
+---
+
+Truy xuất thông tin toàn diện về một địa điểm bao gồm mô tả, đánh giá, thực đơn, ảnh, giờ cao điểm và nhiều hơn nữa.
+
+## Endpoint
+
+`GET /api/maps/place`
+
+## Headers
+
+| Name | Value | Required |
+|------|-------|----------|
+| `x-api-key` | API key của bạn | Có |
+
+## Tham số truy vấn
+
+| Name | Type | Required | Default | Mô tả |
+|------|------|----------|---------|-------|
+| `data_id` | string | Có | — | Định danh địa điểm từ Autocomplete hoặc Search |
+| `lat` | number | Không | `10.801671` | Vĩ độ cho vị trí ưu tiên |
+| `lng` | number | Không | `106.61744` | Kinh độ cho vị trí ưu tiên |
+
+## Ví dụ yêu cầu
+
+```bash
+curl "https://api.piso.dev/api/maps/place?data_id=0x31752bb396ca47f9:0x237d4c6fae045dd9&lat=10.801671&lng=106.61744" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Ví dụ phản hồi
+
+```json
+{
+  "place_result": {
+    "data_id": "0x31752bb396ca47f9:0x237d4c6fae045dd9",
+    "place_id": "ChIJ-fGSpjOo1jERVN0ErG9MfSM",
+    "title": "Highlands Coffee",
+    "description": "Highlands Coffee là chuỗi cà phê Việt Nam cung cấp đa dạng đồ uống cà phê, sinh tố và đồ ăn nhẹ trong không gian ấm cúng.",
+    "type": "cafe",
+    "rating": 4.2,
+    "reviews": 1234,
+    "pricing": {
+      "min": 30000,
+      "max": 65000
+    },
+    "contacts": {
+      "phone": "02838277979",
+      "website": "https://highlandscoffee.com.vn"
+    },
+    "location": {
+      "latitude": 10.7765,
+      "longitude": 106.7008,
+      "timezone": "Asia/Ho_Chi_Minh",
+      "country_code": "VN",
+      "address": {
+        "full": "135 Hai Bà Trưng, Bến Nghé, Quận 1, Hồ Chí Minh, Vietnam",
+        "street": "135 Hai Bà Trưng",
+        "ward": "Bến Nghé",
+        "city": "Quận 1",
+        "country": "Việt Nam"
+      }
+    },
+    "open_state": {
+      "is_open_now": true,
+      "text": "Đang mở cửa"
+    },
+    "opening_hours": [
+      {
+        "day": "Thứ Hai",
+        "hours": "07:00–22:00"
+      }
+    ],
+    "features": {
+      "accessibility": ["Lối vào cho xe lăn"],
+      "parking": ["Bãi đỗ xe miễn phí"],
+      "payments": ["Thẻ ghi nợ", "Thẻ tín dụng"],
+      "service_options": ["Dùng tại chỗ", "Mang đi", "Giao hàng"],
+      "other": []
+    },
+    "popular_times": [
+      {
+        "day": "Thứ Hai",
+        "hours": [
+          {
+            "hour": 10,
+            "occupancy_percent": 45,
+            "status": "normal",
+            "time_label": "10:00"
+          }
+        ]
+      }
+    ],
+    "review_list": [
+      {
+        "review_id": "abc123",
+        "author_name": "Nguyễn Văn A",
+        "author_profile_pic": "https://lh3.googleusercontent.com/...",
+        "rating": 5,
+        "relative_date": "một tháng trước",
+        "text": "Cà phê ngon và không gian đẹp. Rất đáng giới thiệu!",
+        "photos": [
+          {
+            "id": "photo1",
+            "url": "https://lh3.googleusercontent.com/...",
+            "width": 800,
+            "height": 600
+          }
+        ]
+      }
+    ],
+    "menu": [
+      {
+        "dish_name": "Cà phê sữa đá",
+        "media": [
+          {
+            "id": "menu1",
+            "url": "https://lh3.googleusercontent.com/...",
+            "width": 400,
+            "height": 400
+          }
+        ]
+      }
+    ],
+    "photos": [
+      {
+        "category_id": "cat1",
+        "category_label": "Nội thất",
+        "media": [
+          {
+            "id": "photo2",
+            "url": "https://lh3.googleusercontent.com/...",
+            "width": 1200,
+            "height": 900
+          }
+        ]
+      }
+    ],
+    "google_maps_url": "https://www.google.com/maps/place/...",
+    "global_plus_code": "7P28QQ8R+9G"
+  }
+}
+```
+
+## Các trường phản hồi
+
+| Field | Type | Mô tả |
+|-------|------|-------|
+| `place_result` | object | Đối tượng chi tiết địa điểm |
+| `place_result.data_id` | string | Định danh nội bộ của địa điểm |
+| `place_result.place_id` | string | Google Maps place ID |
+| `place_result.title` | string | Tên địa điểm |
+| `place_result.description` | string | Mô tả địa điểm |
+| `place_result.type` | string | Danh mục (ví dụ: cafe, nhà hàng) |
+| `place_result.rating` | number | Đánh giá trung bình (1.0–5.0) |
+| `place_result.reviews` | integer | Tổng số lượt đánh giá |
+| `place_result.pricing` | object | Khoảng giá `{ min, max }` |
+| `place_result.pricing_ranges` | array | Các mức giá chi tiết |
+| `place_result.contacts` | object | `{ phone, website }` |
+| `place_result.location` | object | Dữ liệu vị trí (lat, lng, địa chỉ, timezone, country_code) |
+| `place_result.open_state` | object | Trạng thái hiện tại `{ is_open_now, text }` |
+| `place_result.opening_hours` | array | Giờ mở cửa hàng tuần `[{ day, hours }]` |
+| `place_result.features` | object | Tiện nghi, bãi đỗ xe, thanh toán, dịch vụ |
+| `place_result.popular_times` | array | Mức độ đông đúc theo giờ và ngày |
+| `place_result.review_list` | array | Đánh giá người dùng kèm tác giả, điểm, nội dung, ảnh |
+| `place_result.menu` | array | Món ăn kèm tên và ảnh |
+| `place_result.photos` | array | Thư viện ảnh phân loại |
+| `place_result.google_maps_url` | string | Đường dẫn đến địa điểm trên Google Maps |
+| `place_result.global_plus_code` | string | Mã plus code cho vị trí |
+
+## Lỗi
+
+| Status | Ý nghĩa |
+|--------|---------|
+| 401 | Thiếu hoặc không hợp lệ API key |
+| 422 | Tham số truy vấn không hợp lệ hoặc thiếu |
+| 429 | Vượt quá giới hạn tốc độ |
+| 500 | Lỗi máy chủ nội bộ |

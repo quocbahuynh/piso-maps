@@ -1,0 +1,125 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  padding-top: 64px;
+}
+
+.main {
+  flex: 1;
+  padding-block: var(--space-section);
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-xxl);
+}
+
+.eyebrow {
+  color: var(--color-slate);
+  margin-bottom: var(--space-sm);
+}
+
+.title {
+  margin-bottom: var(--space-md);
+  font-size: var(--text-heading-md);
+  letter-spacing: var(--tracking-heading-md);
+}
+
+.lead {
+  font-size: var(--text-body);
+  color: var(--color-slate-soft);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-canvas-warm);
+}
+
+.featured {
+  background-color: var(--color-ink);
+  color: var(--color-canvas);
+  border-color: var(--color-ink);
+}
+
+.cardTitle {
+  font-size: var(--text-heading-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.cardDesc {
+  font-size: var(--text-meta);
+  color: var(--color-slate);
+  margin-bottom: var(--space-lg);
+}
+
+.featured .cardDesc {
+  color: var(--color-ash);
+}
+
+.priceRow {
+  margin-bottom: var(--space-lg);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xxs);
+}
+
+.price {
+  font-size: var(--text-display);
+  font-weight: 500;
+  letter-spacing: var(--tracking-display);
+}
+
+.unit {
+  font-size: var(--text-meta);
+  color: var(--color-slate);
+}
+
+.featured .unit {
+  color: var(--color-ash);
+}
+
+.featureList {
+  list-style: none;
+  margin: var(--space-lg) 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.featureItem {
+  font-size: var(--text-body-tight);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.check {
+  color: #22c55e;
+  font-weight: bold;
+}

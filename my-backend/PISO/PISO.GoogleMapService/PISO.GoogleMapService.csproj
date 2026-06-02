@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\PISO.Contracts\PISO.Contracts.csproj" />
+    <ProjectReference Include="..\PISO.Shared\PISO.Shared.csproj" />
+    <ProjectReference Include="..\PISO.Service.Contracts\PISO.Service.Contracts.csproj" />
+    <ProjectReference Include="..\PISO.HttpClient\PISO.HttpClient.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>
